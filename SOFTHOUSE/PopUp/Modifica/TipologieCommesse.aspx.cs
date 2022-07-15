@@ -57,6 +57,6 @@ public partial class PopUp_ModificaPopUp_TipologieCommesse : System.Web.UI.Page
         tc.Update();
         txtDescrizioneTipoCommessa.Text="";
         Session["CodiceTipoCommessa"]= null;
-        lbl.Text="Dati Modificati";
+        lbl.Text="Record Modificato";
     }
 }

@@ -57,7 +57,7 @@ public partial class Popup_Inserisci_InserisciSpese : System.Web.UI.Page
         sp.CodiceAzienda = codiceazienda;
         sp.Insert();
 
-        ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Inserimento effettuato correttamente')", true);
+        lbl.Text = "Record Inserito";
         txtImporto.Text = "";
         txtData.Text = "";
     }

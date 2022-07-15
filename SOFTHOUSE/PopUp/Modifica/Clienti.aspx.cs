@@ -79,6 +79,6 @@ public partial class PopUp_Modifica_Clienti : System.Web.UI.Page
         txtCap.Text="";
         txtCitta.Text="";
         txtProvincia.Text="";
-        lblRes.Text="Dati Modificati";
+        lblRes.Text="Record Modificato";
     }
 }

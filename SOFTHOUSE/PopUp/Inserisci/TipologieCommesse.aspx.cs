@@ -33,6 +33,6 @@ public partial class PopUp_InserisciPopUp_TipologieCommesse : System.Web.UI.Page
         tc.Insert();
 
         txtTipoCommessa.Text="";
-        lbl.Text="Dato Inserito!";
+        lbl.Text="Record Inserito";
     }
 }

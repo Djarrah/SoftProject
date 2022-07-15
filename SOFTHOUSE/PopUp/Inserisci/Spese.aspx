@@ -13,6 +13,11 @@
             <table>
                 <tr>
                     <td>
+                        <asp:Label ID="lbl" runat="server" Text="Label"></asp:Label>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:DropDownList ID="ddlAzienda" ToolTip="Azienda" runat="server"></asp:DropDownList><br />
                     </td>
                 </tr>

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TipologieContrratti.aspx.cs" Inherits="PopUp_ModificaPopUp_TipologieContrratti" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="TipologieContratti.aspx.cs" Inherits="PopUp_ModificaPopUp_TipologieContrratti" %>
 
 <!DOCTYPE html>
 

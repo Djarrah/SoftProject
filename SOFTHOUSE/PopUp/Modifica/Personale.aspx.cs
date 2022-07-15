@@ -125,6 +125,6 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
         txtDataInizioCollab.Text = String.Empty;
         txtDataFineCollab.Text = String.Empty;
 
-        lbl.Text = "Record Modificato!";
+        lbl.Text = "Record Modificato";
     }
 }

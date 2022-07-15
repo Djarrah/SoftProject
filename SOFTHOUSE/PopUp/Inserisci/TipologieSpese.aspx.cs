@@ -30,7 +30,7 @@ public partial class PopUp_InserisciPopUp_TipologieSpese : System.Web.UI.Page
         }
 
         ts.Insert();
-
+        lbl.Text = "Record Inserito";
         txtTipologieSpese.Text = "";
 
     }
