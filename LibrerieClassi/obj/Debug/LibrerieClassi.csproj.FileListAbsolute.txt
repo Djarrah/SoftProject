@@ -1,0 +1,12 @@
+C:\Users\galat\Desktop\LibrerieClassi\obj\Debug\LibrerieClassi.csproj.AssemblyReference.cache
+C:\Users\galat\Desktop\LibrerieClassi\obj\Debug\LibrerieClassi.csproj.CoreCompileInputs.cache
+C:\Users\galat\Desktop\LibrerieClassi\bin\Debug\LibrerieClassi.dll
+C:\Users\galat\Desktop\LibrerieClassi\bin\Debug\LibrerieClassi.pdb
+C:\Users\galat\Desktop\LibrerieClassi\obj\Debug\LibrerieClassi.dll
+C:\Users\galat\Desktop\LibrerieClassi\obj\Debug\LibrerieClassi.pdb
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\bin\Debug\LibrerieClassi.dll
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\bin\Debug\LibrerieClassi.pdb
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\obj\Debug\LibrerieClassi.csproj.AssemblyReference.cache
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\obj\Debug\LibrerieClassi.csproj.CoreCompileInputs.cache
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\obj\Debug\LibrerieClassi.dll
+C:\Users\Vittorio\Desktop\Generation\Esercizi\SoftProject\LibrerieClassi\obj\Debug\LibrerieClassi.pdb

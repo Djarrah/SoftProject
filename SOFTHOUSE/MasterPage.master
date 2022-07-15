@@ -1,0 +1,60 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/modernizr-2.0.6.min.js"></script>
+
+    <%-- jQuery Flavio --%>
+    <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/themes/base/jquery-ui.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="http://static.jquery.com/ui/css/demo-docs-theme/ui.theme.css" type="text/css" media="all" />
+    <%--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server"></asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+
+        <%-- TopBar --%>
+        <div id="header-container">
+            <header class="wrapper clearfix">
+                <a href="Default.aspx">
+                    <h1 id="title" class="heading_main">Broviasoft</h1>
+                </a>
+                <nav>
+                    <ul>
+                        <%-- Costruisce la barra dinamicamente in base al tipo user nella Session --%>
+                        <asp:Literal ID="litBarra" runat="server"></asp:Literal>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+
+        <%-- Contenuto Pagina --%>
+        <div class="container">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <%-- Footer --%>
+        <div id="footer-container">
+            <footer class="container">
+                <h2>Broviasoft S.R.L.</h2>
+                Via Vai 5<br />
+                00000 Milano<br />
+                +39 0000000000<br />
+                PIVA 0000000000<br />
+            </footer>
+        </div>
+
+    </form>
+</body>
+</html>
