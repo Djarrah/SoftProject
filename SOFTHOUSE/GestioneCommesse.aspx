@@ -124,21 +124,4 @@
         <HeaderStyle CssClass="headergrid" />
         <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
-
-    <h1>Tipologie Commesse</h1>
-    <div class="pulsanti">
-        <asp:Button ID="btnInserisciTipo" runat="server" ClientIDMode="Static" Text="Inserisci" CssClass="button" />
-        <asp:Button ID="btnModificaTipo" runat="server" ClientIDMode="Static" Enabled="False" Text="Modifica" CssClass="button" />
-    </div>
-
-    <asp:GridView ID="grigliaTipi" runat="server" CssClass="grid" DataKeyNames="CodiceTipoCommessa" AutoGenerateColumns="false" OnSelectedIndexChanged="grigliaTipi_SelectedIndexChanged">
-        <Columns>
-            <asp:BoundField DataField="CodiceTipoCommessa" Visible="False" />
-            <asp:BoundField DataField="DescrizioneTipoCommessa" HeaderText="Descrizione" />
-            <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
-        </Columns>
-        <HeaderStyle CssClass="headergrid" />
-        <SelectedRowStyle CssClass="selezionegrid"/>
-    </asp:GridView>
 </asp:Content>
-

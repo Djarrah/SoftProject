@@ -4,14 +4,13 @@
     <title>Gestione Utenti</title>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
-    <table>
-        <tr>
-            <td>
-                <asp:Button runat="server" Text="Aggiorna Griglia" ID="btnAggiorna" OnClick="btnAggiorna_Click" />
-            </td>
-        </tr>
-    </table>
+    <h1>Gestione Utenti</h1>
+    <div class="pulsanti">
+    <asp:Button runat="server" Text="Aggiorna Griglia" ID="btnAggiorna" CssClass="button" OnClick="btnAggiorna_Click" />
+    </div>
     <asp:GridView runat="server" ID="griglia" AutoGenerateColumns="False" DataKeyNames="CodiceUtente">
+               <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
         <Columns>
             <asp:BoundField DataField="CodiceUtente" Visible="False" />
             <asp:BoundField DataField="TipologiaUtente" HeaderText="Tipo Utente" />

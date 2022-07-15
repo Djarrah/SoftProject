@@ -102,10 +102,10 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <h1>Gestione Personale</h1>
-    <div>
+    <div class="pulsanti">
         <asp:Button ID="btnInserisciPersonale" runat="server" Text="Inserisci" ClientIDMode="Static" CssClass="button" />
         <asp:Button ID="btnModificaPersonale" runat="server" Text="Modifica" Enabled="False" ClientIDMode="Static" CssClass="button" />
-        <asp:Button runat="server" Text="Carica Griglia" ID="btnCaricaGriglia" OnClick="btnCaricaGriglia_Click" CssClass="button" />
+        <asp:Button runat="server" Text="Aggiorna Griglia" ID="btnCaricaGriglia" OnClick="btnCaricaGriglia_Click" CssClass="button" />
     </div>
 
     <asp:GridView runat="server" ID="grigliaPersonale" AutoGenerateColumns="False" DataKeyNames="CodicePersonale" OnSelectedIndexChanged="grigliaPersonale_SelectedIndexChanged">
@@ -130,14 +130,16 @@
             <asp:BoundField DataField="DataFineCollaborazione" HeaderText="Fine Collaborazione" />
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
+                    <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
 
     </asp:GridView>
 
     <h1>Tipologie Contratti</h1>
-    <div>
+    <div class="pulsanti">
         <asp:Button ID="btnInserisciTipologieContratti" runat="server" Text="Inserisci" ClientIDMode="Static" CssClass="button" />
         <asp:Button ID="btnModificaTipologieContratti" runat="server" Text="Modifica" Enabled="False" ClientIDMode="Static" CssClass="button" />
-        <asp:Button runat="server" Text="Carica Griglia" ID="Button1" OnClick="btnCaricaGriglia_Click" CssClass="button" />
+        <asp:Button runat="server" Text="Aggiorna Griglia" ID="Button1" OnClick="btnCaricaGriglia_Click" CssClass="button" />
     </div>
 
     <asp:GridView ID="grigliaTipologieContratti" runat="server" OnSelectedIndexChanged="grigliaTipologieContratti_SelectedIndexChanged" DataKeyNames="CodiceTipoContratto" AutoGenerateColumns="false">
@@ -146,7 +148,8 @@
             <asp:BoundField DataField="DescrizioneTipoContratto" HeaderText="Descrizione" />
             <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
         </Columns>
-
+                <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
 
 </asp:Content>

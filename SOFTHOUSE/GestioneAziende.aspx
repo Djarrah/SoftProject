@@ -60,7 +60,7 @@
     <div class="pulsanti">
         <asp:Button ID="btnInserisci" runat="server" Text="Inserisci" ClientIDMode="Static" CssClass="button" />
         <asp:Button ID="btnModifica" runat="server" Text="Modifica" Enabled="False" ClientIDMode="Static" CssClass="button" />
-        <asp:Button runat="server" Text="Carica Griglia" ID="btnCaricaGriglia" OnClick="btnCaricaGriglia_Click" CssClass="button" />
+        <asp:Button runat="server" Text="Aggiorna Griglia" ID="btnCaricaGriglia" OnClick="btnCaricaGriglia_Click" CssClass="button" />
     </div>
 
     <asp:GridView runat="server" ID="griglia" AutoGenerateColumns="False" DataKeyNames="CodiceAzienda" OnSelectedIndexChanged="griglia_SelectedIndexChanged" CssClass="table">

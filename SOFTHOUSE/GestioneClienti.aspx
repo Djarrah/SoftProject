@@ -56,7 +56,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 
     <h1>Gestione Clienti</h1>
-    <div>
+    <div class="pulsanti">
         <asp:Button ID="btnInserisci" runat="server" Text="Inserisci" ClientIDMode="Static" CssClass="button" />
         <asp:Button ID="btnModifica" runat="server" Text="Modifica" ClientIDMode="Static" CssClass="button" Enabled="False" />
         <asp:Button ID="btnAggiorna" runat="server" Text="Aggiorna Griglia" ClientIDMode="Static" CssClass="button" />
@@ -74,6 +74,8 @@
             <asp:BoundField DataField="Provincia" HeaderText="Provincia" />
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
 </asp:Content>
 

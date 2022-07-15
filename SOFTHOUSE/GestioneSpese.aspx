@@ -118,11 +118,12 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
     <div id="spese">
         <h1>Gestione Spese</h1>
-        <div>
+        <div class="pulsanti">
             <asp:Button ID="btnInserisci" runat="server" ClientIDMode="Static" Text="Inserisci" CssClass="button" />
             <asp:Button ID="btnModifica" runat="server" ClientIDMode="Static" Enabled="False" Text="Modifica" CssClass="button" />
             <asp:Button ID="btnElimina" runat="server" ClientIDMode="Static" Text="Elimina" CssClass="button" />
-        </div>
+       <asp:Button ID="btnAggiornaSpese" runat="server" Text="Aggiorna Griglia" OnClick="btnAggiornaSpese_Click" CssClass="button" />
+            </div>
 
         <asp:GridView ID="gridSpese" runat="server" DataKeyNames="CodiceSpesa" AutoGenerateColumns="false" OnSelectedIndexChanged="gridSpese_SelectedIndexChanged">
             <Columns>
@@ -133,14 +134,18 @@
                 <asp:BoundField DataField="DataSpesa" HeaderText="Data" />
                 <asp:CommandField ButtonType="Button" ShowSelectButton="true" />
             </Columns>
+            <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
         </asp:GridView>
     </div>
 
     <div id="tipispese">
         <h1>Gestione Tipi Spese</h1>
-        <div>
+        <div class="pulsanti">
             <asp:Button ID="btnInserisciTipo" runat="server" ClientIDMode="Static" Text="Inserisci" CssClass="button" />
             <asp:Button ID="btnModificaTipo" runat="server" ClientIDMode="Static" Enabled="False" Text="Modifica" CssClass="button" />
+       <asp:Button ID="btnAggiornaTipi" runat="server" Text="Aggiorna Griglia" OnClick="btnAggiornaTipi_Click" CssClass="button" />
+
         </div>
 
         <asp:GridView ID="gridTipiSpese" runat="server" DataKeyNames="CodiceTipoSpesa" AutoGenerateColumns="false" OnSelectedIndexChanged="gridTipiSpese_SelectedIndexChanged">
@@ -149,12 +154,11 @@
                 <asp:BoundField DataField="DescrizioneTipoSpesa" HeaderText="Descrizione" />
                 <asp:CommandField ButtonType="Button" ShowSelectButton="true" />
             </Columns>
+            <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
         </asp:GridView>
     </div>
 
-    <div>
-        <asp:Button ID="btnAggiorna" runat="server" Text="Aggiorna" OnClick="btnAggiorna_Click" CssClass="button" />
-    </div>
 
 </asp:Content>
 
