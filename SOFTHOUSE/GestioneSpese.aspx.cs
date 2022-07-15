@@ -47,9 +47,14 @@ public partial class Default2 : System.Web.UI.Page
 
 
 
-    protected void btnAggiorna_Click(object sender, EventArgs e)
+    protected void btnAggiornaSpese_Click(object sender, EventArgs e)
     {
         CaricaGrigliaSpese();
+        
+    }
+    protected void btnAggiornaTipi_Click(object sender, EventArgs e)
+    {
+        
         CaricaGrigliaTipi();
     }
 

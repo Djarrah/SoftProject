@@ -106,7 +106,8 @@
             <asp:BoundField DataField="CodiceCommessa" Visible="False" />
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
-
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
 </asp:Content>
 
