@@ -82,6 +82,6 @@ public partial class PopUp_ModificaPopUp_Aziende : System.Web.UI.Page
         txtProvincia.Text = String.Empty;
         Session["CodiceAzienda"] = null;
 
-        lbl.Text = "Record Modificato!";
+        lbl.Text = "Record Modificato";
     }
 }

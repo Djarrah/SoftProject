@@ -53,6 +53,6 @@ public partial class PopUp_InserisciPopUp_Aziende : System.Web.UI.Page
         txtCitta.Text = String.Empty;
         txtProvincia.Text = String.Empty;
 
-        lbl.Text = "Record Inserito!";
+        lbl.Text = "Record Inserito";
     }
 }

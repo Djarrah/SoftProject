@@ -30,7 +30,7 @@ public partial class PopUp_InserisciPopUp_TipologieContratti : System.Web.UI.Pag
         }
 
         t.Insert();
-
+        lbl.Text = "Record Inserito";
         txtTipologieContratti.Text="";
 
     }

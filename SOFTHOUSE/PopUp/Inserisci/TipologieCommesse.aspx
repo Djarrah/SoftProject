@@ -9,14 +9,23 @@
 </head>
 <body>
     <form id="form1" runat="server">
-                <div>
-            <asp:Label ID="lbl" runat="server" Text=""></asp:Label>
-        </div>
         <div>
-            <asp:TextBox ID="txtTipoCommessa" runat="server"></asp:TextBox>
-            <br />
-            <asp:Button ID="btnInserisci" runat="server" Text="Inserisci" OnClick="btnInserisci_Click" />
+            <table>
+                <tr>
+                    <td>
+                        <asp:Label ID="lbl" runat="server" Text=""></asp:Label></td>
+                </tr>
 
+                <tr>
+                    <td>
+                        <asp:TextBox ID="txtTipoCommessa" runat="server"></asp:TextBox></td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <asp:Button ID="btnInserisci" runat="server" Text="Inserisci" OnClick="btnInserisci_Click" /></td>
+                </tr>
+            </table>
         </div>
     </form>
 </body>

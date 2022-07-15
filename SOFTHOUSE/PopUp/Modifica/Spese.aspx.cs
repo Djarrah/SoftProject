@@ -88,7 +88,7 @@ public partial class Popup_Modifica_ModificaSpese : System.Web.UI.Page
         s.CodiceTipoSpesa = int.Parse(ddlTipoSpesa.SelectedValue);
         s.Update();
         ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Modifica effettuata correttamente')", true);
-
+        Label1.Text = "Record Modificato";
         txtImporto.Text = "";
         txtData.Text = "";
 
