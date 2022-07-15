@@ -122,7 +122,8 @@ public class COMMESSE
         cmd.Parameters.AddWithValue("@ImportoTotale", ImportoTotale);
         cmd.Parameters.AddWithValue("@ImportoOrario", ImportoOrario);
         cmd.Parameters.AddWithValue("@ImportoMensile", ImportoMensile);
-        cmd.Parameters.AddWithValue("@ImportoTrasferta", ImportoKm);
+        cmd.Parameters.AddWithValue("@ImportoTrasferta", ImportoTrasferta);
+        cmd.Parameters.AddWithValue("@ImportoKm", ImportoKm);
         cmd.Parameters.AddWithValue("@ImportoPasti", ImportoPasti);
         cmd.Parameters.AddWithValue("@ImportoPernottamenti", ImportoPernottamenti);
         cmd.Parameters.AddWithValue("@CommessaChiusa", CommessaChiusa);
@@ -146,7 +147,8 @@ public class COMMESSE
         cmd.Parameters.AddWithValue("@ImportoTotale", ImportoTotale);
         cmd.Parameters.AddWithValue("@ImportoOrario", ImportoOrario);
         cmd.Parameters.AddWithValue("@ImportoMensile", ImportoMensile);
-        cmd.Parameters.AddWithValue("@ImportoTrasferta", ImportoKm);
+        cmd.Parameters.AddWithValue("@ImportoTrasferta", ImportoTrasferta);
+        cmd.Parameters.AddWithValue("@ImportoKm", ImportoKm);
         cmd.Parameters.AddWithValue("@ImportoPasti", ImportoPasti);
         cmd.Parameters.AddWithValue("@ImportoPernottamenti", ImportoPernottamenti);
         cmd.Parameters.AddWithValue("@CommessaChiusa", CommessaChiusa);

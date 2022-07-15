@@ -16,7 +16,7 @@ public partial class MasterPage : System.Web.UI.MasterPage
         {
             t += "<li><div class='dropdown'><button class='dropbtn'>Aziende</button><div class='dropdown-content'><a href='GestioneAziende.aspx'>Gestione Aziende</a></div></li>";
             t += "<li><div class='dropdown'><button class='dropbtn'>Personale</button><div class='dropdown-content'><a href='GestioneUtenti.aspx'>Gestione Utenti</a><a href='GestionePersonale.aspx'>Gestione Personale</a></div></div></li>";
-            t += "<li><div class='dropdown'><button class='dropbtn'>Contabilità</button><div class='dropdown-content'><a href='http://google.it'>Resoconti e Previsioni</a><a href='http://google.it'>Spese del Personale</a><a href='GestioneSpese.aspx'>Gestione Spese Varie</a><a href='http://google.it'>Gestione Fatture</a><a href='GestioneClienti.aspx'>Gestione Clienti</a><a href='http://google.it'>Gestione Commesse</a></div></div></li>";
+            t += "<li><div class='dropdown'><button class='dropbtn'>Contabilità</button><div class='dropdown-content'><a href='http://google.it'>Resoconti e Previsioni</a><a href='http://google.it'>Spese del Personale</a><a href='GestioneSpese.aspx'>Gestione Spese Varie</a><a href='http://google.it'>Gestione Fatture</a><a href='GestioneClienti.aspx'>Gestione Clienti</a><a href='GestioneCommesse.aspx'>Gestione Commesse</a></div></div></li>";
         }
  
         t += "<li><div class='dropdown'> <button class='dropbtn'>Rapporti Lavorativi</button>  <div class='dropdown-content'><a href='http://google.it'>Gestione Rapporti</a> </div> </div> </li>";

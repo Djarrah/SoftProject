@@ -12,6 +12,8 @@
                 dialog.dialog({
                     modal: true,
                     title: 'Inserimento dati',
+                    height: 450,
+                    resizable: false,
                     overlay: {
                         opacity: 0.9,
                         background: 'black'
@@ -32,6 +34,7 @@
                 dialog.dialog({
                     modal: true,
                     title: 'Modifica dati',
+                    height: 480,
                     resizable: false,
                     overlay: {
                         opacity: 0.9,
@@ -101,12 +104,37 @@
         <asp:Button ID="btnAggiorna" runat="server" Text="Aggiorna" CssClass="button" OnClick="btnAggiorna_Click" />
     </div>
 
-    <asp:GridView ID="grigliaCommesse" runat="server" CssClass="grid" DataKeyNames="CodiceCommessa" OnSelectedIndexChanged="grigliaCommesse_SelectedIndexChanged">
+    <asp:GridView ID="grigliaCommesse" runat="server" CssClass="grid" DataKeyNames="CodiceCommessa" OnSelectedIndexChanged="grigliaCommesse_SelectedIndexChanged" AutoGenerateColumns="False">
         <Columns>
-            <asp:BoundField DataField="CodiceCommessa" Visible="False" />
+            <asp:BoundField DataField="Azienda" HeaderText="Azienda"/>
+            <asp:BoundField DataField="Cliente" HeaderText="Cliente"/>
+            <asp:BoundField DataField="Tipologia" HeaderText="Tipologia"/>
+            <asp:BoundField DataField="Data inizio" HeaderText="Data Inizio"/>
+            <asp:BoundField DataField="Data Fine" HeaderText="Data Fine"/>
+            <asp:BoundField DataField="Totale" HeaderText="Importo Totale"/>
+            <asp:BoundField DataField="Importo Orario" HeaderText="Importo Orario"/>
+            <asp:BoundField DataField="Importo Mensile" HeaderText="Importo Mensile"/>
+            <asp:BoundField DataField="Importo Trasferta" HeaderText="Trasferte"/>
+            <asp:BoundField DataField="Importo/Km" HeaderText="Importo/Km"/>
+            <asp:BoundField DataField="Pasti" HeaderText="Pasti"/>
+            <asp:BoundField DataField="Pernottamenti" HeaderText="Pernottamenti"/>
+            <asp:BoundField DataField="Commessa Chiusa?" HeaderText="Chiusa?"/>
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
+    </asp:GridView>
 
+    <h1>Tipologie Commesse</h1>
+    <div class="pulsanti">
+        <asp:Button ID="btnInserisciTipo" runat="server" ClientIDMode="Static" Text="Inserisci" CssClass="button" />
+        <asp:Button ID="btnModificaTipo" runat="server" ClientIDMode="Static" Enabled="False" Text="Modifica" CssClass="button" />
+    </div>
+
+    <asp:GridView ID="grigliaTipi" runat="server" CssClass="grid" DataKeyNames="CodiceTipoCommessa" AutoGenerateColumns="false" OnSelectedIndexChanged="grigliaTipi_SelectedIndexChanged">
+        <Columns>
+            <asp:BoundField DataField="CodiceTipoCommessa" Visible="False" />
+            <asp:BoundField DataField="DescrizioneTipoCommessa" HeaderText="Descrizione" />
+            <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
+        </Columns>
     </asp:GridView>
 </asp:Content>
 
