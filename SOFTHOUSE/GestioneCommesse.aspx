@@ -121,6 +121,8 @@
             <asp:BoundField DataField="Commessa Chiusa?" HeaderText="Chiusa?"/>
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
 
     <h1>Tipologie Commesse</h1>
@@ -135,6 +137,8 @@
             <asp:BoundField DataField="DescrizioneTipoCommessa" HeaderText="Descrizione" />
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid"/>
     </asp:GridView>
 </asp:Content>
 
