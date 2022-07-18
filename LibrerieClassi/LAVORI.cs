@@ -44,6 +44,14 @@ public class LAVORI
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
+    public DataTable SelectForPersonale(int CodicePersonale)
+    {
+        SqlCommand cmd = new SqlCommand("LAVORI_SELECTFORPERSONALE");
+        cmd.Parameters.AddWithValue("@CodicePersonale", CodicePersonale);
+        CONNESSIONE conn = new CONNESSIONE();
+        return conn.EseguiSelect(cmd);
+    }
+
     public void Insert()
     {
         SqlCommand cmd = new SqlCommand("LAVORI_INSERT");
