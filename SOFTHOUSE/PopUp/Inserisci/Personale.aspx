@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList ID="ddlCodiceTipoContratto" runat="server"></asp:DropDownList>
+                        <asp:DropDownList ID="ddlCodiceTipoContratto" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCodiceTipoContratto_SelectedIndexChanged"></asp:DropDownList>
                     </td>
                 </tr>
                 <tr>
@@ -38,7 +38,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="txtRagioneSociale" runat="server" Placeholder="Ragione Sociale" MaxLength="50"></asp:TextBox>
+                        <asp:TextBox ID="txtRagioneSociale" runat="server" Placeholder="Ragione Sociale" MaxLength="50" Visible="False"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:TextBox ID="txtPartitaIva" runat="server" Placeholder="Partita IVA" MaxLength="11"></asp:TextBox>
+                        <asp:TextBox ID="txtPartitaIva" runat="server" Placeholder="Partita IVA" MaxLength="11" Visible="False"></asp:TextBox>
                     </td>
                 </tr>
                 <tr>

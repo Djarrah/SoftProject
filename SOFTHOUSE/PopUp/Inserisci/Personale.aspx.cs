@@ -111,4 +111,20 @@ public partial class PopUp_Inserisci_Personale : System.Web.UI.Page
 
         lbl.Text = "Record Inserito!";
     }
+
+    protected void ddlCodiceTipoContratto_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCodiceTipoContratto.SelectedItem.Text=="Dipendenti")
+        {
+            txtRagioneSociale.Visible = false;
+            txtPartitaIva.Visible=false;
+           
+        }
+        else
+            if(ddlCodiceTipoContratto.SelectedItem.Text=="Collaboratori P.Iva")
+        {
+            txtRagioneSociale.Visible = true;
+            txtPartitaIva.Visible=true;
+        }
+    }
 }

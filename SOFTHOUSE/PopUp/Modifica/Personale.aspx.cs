@@ -20,6 +20,17 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
                 return;
             }
 
+            AZIENDE A = new AZIENDE();
+            ddlCodiceAzienda.DataSource = A.Select();
+            ddlCodiceAzienda.DataTextField="RagioneSociale";
+            ddlCodiceAzienda.DataValueField="CodiceAzienda";
+            ddlCodiceAzienda.DataBind();
+
+            TIPOLOGIECONTRATTI TC = new TIPOLOGIECONTRATTI();
+            ddlCodiceTipoContratto.DataSource = TC.Select();
+            ddlCodiceTipoContratto.DataTextField="DescrizioneTipoContratto";
+            ddlCodiceTipoContratto.DataBind();
+
             int cod = int.Parse(Session["CodicePersonale"].ToString());
             PERSONALE P = new PERSONALE();
             DataRow sel = P.Select(cod).Rows[0];
@@ -33,8 +44,8 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
             txtCap.Text = sel["Cap"].ToString();
             txtDataNascita.Text = sel["DataNascita"].ToString();
             txtCostoMensile.Text = sel["CostoMensile"].ToString();
-            txtDataInizioCollab.Text = sel["DataInizioCollab"].ToString();
-            txtDataFineCollab.Text = sel["DataFineCollab"].ToString();
+            txtDataInizioCollab.Text = sel["DataInizioCollaborazione"].ToString();
+            txtDataFineCollab.Text = sel["DataFineCollaborazione"].ToString();
         }
     }
     protected void btnModifica_Click(object sender, EventArgs e)
@@ -125,6 +136,21 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
         txtDataInizioCollab.Text = String.Empty;
         txtDataFineCollab.Text = String.Empty;
 
-        lbl.Text = "Record Modificato";
+        lbl.Text = "Record Modificato!";
+    }
+    protected void ddlCodiceTipoContratto_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        if (ddlCodiceTipoContratto.SelectedItem.Text=="Dipendenti")
+        {
+            txtRagioneSociale.Visible = false;
+            txtPartitaIva.Visible=false;
+
+        }
+        else
+            if (ddlCodiceTipoContratto.SelectedItem.Text=="Collaboratori P.Iva")
+        {
+            txtRagioneSociale.Visible = true;
+            txtPartitaIva.Visible=true;
+        }
     }
 }
