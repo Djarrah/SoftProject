@@ -41,8 +41,9 @@ public partial class Login : System.Web.UI.Page
             return;
         }
 
-        // Salvo il tipo utente nella Session
+        // Salvo il tipo utente e il codicePersonale nella Session
         Session["TipologiaUtente"] = u.RecuperaTipoUtente();
+        Session["CodicePersonale"] = u.RecuperaCodicePersonale();
 
         // Reindirizzamento alla pagina principale
         Response.Redirect("Default.aspx");
