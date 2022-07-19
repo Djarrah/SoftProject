@@ -112,5 +112,16 @@ public class UTENTI
         return dt.Rows[0]["TipologiaUtente"].ToString();
     }
 
+    public string RecuperaCodicePersonale()
+    {
+        SqlCommand cmd = new SqlCommand("UTENTI_GETUSERTYPE");
+        cmd.Parameters.AddWithValue("@email", email);
+
+        CONNESSIONE conn = new CONNESSIONE();
+        DataTable dt = conn.EseguiSelect(cmd);
+
+        return dt.Rows[0]["CodicePersonale"].ToString();
+    }
+
     #endregion
 }
