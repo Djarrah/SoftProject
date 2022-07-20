@@ -46,7 +46,9 @@
     <Compile Include="COMMESSE.cs" />
     <Compile Include="CONNESSIONE.cs" />
     <Compile Include="CRYPTA.cs" />
+    <Compile Include="FATTURE.cs" />
     <Compile Include="K.cs" />
+    <Compile Include="LAVORI.cs" />
     <Compile Include="MAIL.cs" />
     <Compile Include="PERSONALE.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

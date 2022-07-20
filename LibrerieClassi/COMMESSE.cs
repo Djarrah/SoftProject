@@ -14,6 +14,7 @@ public class COMMESSE
     public int CodiceAzienda;
     public int CodiceCliente;
     public int CodiceTipoCommessa;
+    public string DescrizioneCommessa;
     public string DataInizioCommessa;
     public string DataFineCommessa;
     public decimal ImportoTotale;
@@ -34,12 +35,13 @@ public class COMMESSE
     public COMMESSE(
         int CodiceAzienda, int CodiceCliente, int CodiceTipoCommessa, string DataInizioCommessa, string DataFineCommessa,
         decimal ImportoTotale, decimal ImportoOrario, decimal ImportoMensile, decimal ImportoTrasferta,
-        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa
+        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa, string DescrizioneCommessa
         )
     {
         this.CodiceAzienda = CodiceAzienda;
         this.CodiceCliente = CodiceCliente;
         this.CodiceTipoCommessa = CodiceTipoCommessa;
+        this.DescrizioneCommessa = DescrizioneCommessa;
         this.DataInizioCommessa = DataInizioCommessa;
         this.DataFineCommessa = DataFineCommessa;
         this.ImportoTotale = ImportoTotale;
@@ -55,12 +57,13 @@ public class COMMESSE
     public COMMESSE(
         int CodiceCommessa, int CodiceAzienda, int CodiceCliente, int CodiceTipoCommessa, string DataInizioCommessa,
         string DataFineCommessa, decimal ImportoTotale, decimal ImportoOrario, decimal ImportoMensile, decimal ImportoTrasferta,
-        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa
+        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa, string DescrizioneCommessa
         )
     {
         this.CodiceCommessa = CodiceCommessa;
         this.CodiceAzienda = CodiceAzienda;
         this.CodiceCliente = CodiceCliente;
+        this.DescrizioneCommessa = DescrizioneCommessa;
         this.CodiceTipoCommessa = CodiceTipoCommessa;
         this.DataInizioCommessa = DataInizioCommessa;
         this.DataFineCommessa = DataFineCommessa;
@@ -117,6 +120,7 @@ public class COMMESSE
         cmd.Parameters.AddWithValue("@CodiceAzienda", CodiceAzienda);
         cmd.Parameters.AddWithValue("@CodiceCliente", CodiceCliente);
         cmd.Parameters.AddWithValue("@CodiceTipoCommessa", CodiceTipoCommessa);
+        cmd.Parameters.AddWithValue("@DescrizioneCommessa", DescrizioneCommessa);
         cmd.Parameters.AddWithValue("@DataInizioCommessa", DataInizioCommessa);
         cmd.Parameters.AddWithValue("@DataFineCommessa", DataFineCommessa);
         cmd.Parameters.AddWithValue("@ImportoTotale", ImportoTotale);
@@ -141,6 +145,7 @@ public class COMMESSE
         cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
         cmd.Parameters.AddWithValue("@CodiceAzienda", CodiceAzienda);
         cmd.Parameters.AddWithValue("@CodiceCliente", CodiceCliente);
+        cmd.Parameters.AddWithValue("@DescrizioneCommessa", DescrizioneCommessa);
         cmd.Parameters.AddWithValue("@CodiceTipoCommessa", CodiceTipoCommessa);
         cmd.Parameters.AddWithValue("@DataInizioCommessa", DataInizioCommessa);
         cmd.Parameters.AddWithValue("@DataFineCommessa", DataFineCommessa);
