@@ -18,14 +18,12 @@ public class FATTURE
     }
     public int Anno;
     public int Mese;
-    public int AnnoInizio;
-    public int AnnoFine;
-    public int MeseInizio;
-    public int MeseFine;
     public int CodiceCommessa;
     public decimal Imponibile;
     public int AliquotaIva;
-
+    public int AnnoInserito;
+    public int MeseInserito;
+    public int Giorno = 15;
 
 
 
@@ -48,34 +46,28 @@ public class FATTURE
         return conn.EseguiSelect(cmd);
     }
 
-    public DataTable SelectCommesse(int AnnoInizio, int AnnoFine, int MeseInizio, int MeseFine)
+    public DataTable SelectCommesse(int AnnoInserito, int MeseInserito)
     {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTCOMMESSE");
-
-        cmd.Parameters.AddWithValue("@AnnoInizio", AnnoInizio);
-        cmd.Parameters.AddWithValue("@AnnoFine", AnnoFine);
-        cmd.Parameters.AddWithValue("@MeseInizio", MeseInizio);
-        cmd.Parameters.AddWithValue("@MeseFine", MeseFine);
-
+        SqlCommand cmd = new SqlCommand("COMMESSE_SELECT");
+        DateTime Data = new DateTime(AnnoInserito, MeseInserito, Giorno);
+        cmd.Parameters.AddWithValue("@Data", Data);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
 
-    public DataTable SelectLavori(int Anno, int Mese, int CodiceCommessa)
+    public DataTable SelectLavori(int AnnoInserito, int MeseInserito, int CodiceCommessa)
     {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTCOMMESSE");
-
-        cmd.Parameters.AddWithValue("@Anno", Anno);
-        cmd.Parameters.AddWithValue("@Mese", Mese);
+        SqlCommand cmd = new SqlCommand("FATTURE_SELECTLAVORI");
+        DateTime Data = new DateTime(AnnoInserito, MeseInserito, Giorno);
+        cmd.Parameters.AddWithValue("@Data", Data);
         cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
-
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
 
     public DataTable SelectCorpo()
     {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTCORPO");
+        SqlCommand cmd = new SqlCommand("FATTURE_SELECTCOMMESSE");
 
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
