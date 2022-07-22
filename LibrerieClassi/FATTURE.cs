@@ -22,18 +22,10 @@ public class FATTURE
     public int AliquotaIva;
     public int CodiceFattura;
     public string NumeroFattura;
-    public decimal Importo;
 
     public DataTable Select()
     {
         SqlCommand cmd = new SqlCommand("FATTURE_SELECTALL");
-        CONNESSIONE conn = new CONNESSIONE();
-        return conn.EseguiSelect(cmd);
-    }
-    public DataTable SelectOne(int CodiceFattura)
-    {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTONE");
-        cmd.Parameters.AddWithValue("@CodiceFattura", CodiceFattura);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
@@ -53,6 +45,13 @@ public class FATTURE
 
         cmd.Parameters.AddWithValue("@Anno", Anno);
         cmd.Parameters.AddWithValue("@Mese", Mese);
+        CONNESSIONE conn = new CONNESSIONE();
+        return conn.EseguiSelect(cmd);
+    }
+    public DataTable SelectOne(int CodiceFattura)
+    {
+        SqlCommand cmd = new SqlCommand("FATTURE_SELECTONE");
+        cmd.Parameters.AddWithValue("@CodiceFattura", CodiceFattura);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
@@ -120,15 +119,7 @@ public class FATTURE
         dt = conn.EseguiSelect(cmd);
         return decimal.Parse(dt.Rows[0]["SOMMA"].ToString());
     }
-    //public DataTable SelectCorpo()
-    //{
 
-    //}
-
-    //public DataTable SelectOre()
-    //{
-
-    //}
 
     public void Insert()
     {
@@ -168,7 +159,7 @@ public class FATTURE
         DataTable dt = new DataTable();
         dt = conn.EseguiSelect(cmd);
 
-        if (dt.Rows.Count == 0) { return "000"; }
+        if (dt.Rows.Count == 0) { return "001"; }
         int PiuUno = int.Parse(dt.Rows[0]["ULTIMA"].ToString()) + 1;
         string TreCar;
         if (PiuUno <= 9)
