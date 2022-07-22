@@ -45,6 +45,7 @@
     <Compile Include="CLIENTI.cs" />
     <Compile Include="COMMESSE.cs" />
     <Compile Include="CONNESSIONE.cs" />
+    <Compile Include="CONTABILITA.cs" />
     <Compile Include="CRYPTA.cs" />
     <Compile Include="FATTURE.cs" />
     <Compile Include="K.cs" />
