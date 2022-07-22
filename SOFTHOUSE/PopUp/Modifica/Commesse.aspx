@@ -27,6 +27,11 @@
                         <asp:DropDownList ID="ddlTipologieCommesse"  ToolTip="Tipo" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlTipologieCommesse_SelectedIndexChanged"></asp:DropDownList>
                     </td>
                 </tr>
+                 <tr>
+                    <td>
+                        <asp:TextBox ID="txtDescrizioneCommessa" runat="server" Placeholder="Descrizione Commessa" MaxLength="50"></asp:TextBox>
+                    </td>
+                </tr>
                 <tr>
                     <td>
                         <asp:TextBox ID="txtInizio" runat="server" Tooltip="Inizio" TextMode="Date"></asp:TextBox>

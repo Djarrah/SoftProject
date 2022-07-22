@@ -9,7 +9,22 @@ public partial class PopUp_Inserisci_Lavori : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            //richiamo tipo Personale
+            PERSONALE P = new PERSONALE();
+            ddlCodicePersonale.DataSource = P.SelectDdl();
+            ddlCodicePersonale.DataTextField="PERSONALEDDL";
+            ddlCodicePersonale.DataValueField="CodicePersonale";
+            ddlCodicePersonale.DataBind();
 
+            //Richiamo il tipo Commessa
+            COMMESSE C = new COMMESSE();
+            ddlCodiceCommessa.DataSource = C.Select();
+            ddlCodiceCommessa.DataTextField="CodiceCommessa";
+            ddlCodiceCommessa.DataValueField="DescrizioneCommessa";
+            ddlCodiceCommessa.DataBind();
+        }
     }
 
     protected void btnInserisci_Click(object sender, EventArgs e)
@@ -41,6 +56,18 @@ public partial class PopUp_Inserisci_Lavori : System.Web.UI.Page
         //Dichiarazione variabili
         int CodicePersonale= int.Parse(ddlCodicePersonale.SelectedValue);
         int CodiceCommessa= int.Parse(ddlCodiceCommessa.SelectedValue);
-       
+
+        LAVORI L= new LAVORI();
+        L.Insert();
+
+        txtDataLavoro.Text = "";
+        txtOreLavoro.Text= "";
+        txtTrasferta.Text= "";
+        txtKM.Text= "";
+        txtPasti.Text= "";
+        txtPernottamenti.Text="";
+
+        lbl.Text= "Record Inserito!";
     }
+
 }
