@@ -23,14 +23,14 @@ public partial class PopUp_Modifica_Lavori : System.Web.UI.Page
             //richiamo tipo Personale
             PERSONALE P = new PERSONALE();
             ddlCodicePersonale.DataSource = P.SelectDdl();
-            ddlCodicePersonale.DataTextField="CodicePersonale";
-            ddlCodicePersonale.DataValueField="PERSONALEDDL";
+            ddlCodicePersonale.DataValueField="CodicePersonale";
+            ddlCodicePersonale.DataTextField="PERSONALEDDL";
             ddlCodicePersonale.DataBind();
 
             //Richiamo il tipo Commessa
             COMMESSE C = new COMMESSE();
             ddlCodiceCommessa.DataSource = C.Select();
-            ddlCodiceCommessa.DataTextField="DescrizioneCommessa";
+            ddlCodiceCommessa.DataTextField="Descrizione Commessa";
             ddlCodiceCommessa.DataValueField="CodiceCommessa";
             ddlCodiceCommessa.DataBind();
 
@@ -43,6 +43,7 @@ public partial class PopUp_Modifica_Lavori : System.Web.UI.Page
             txtKM.Text = sel["KM"].ToString();
             txtPasti.Text = sel["Pasti"].ToString();
             txtPernottamenti.Text = sel["Pernottamenti"].ToString();
+            txtTrasferta.Text = sel["Trasferta"].ToString();
             
         }
     }
@@ -84,6 +85,17 @@ public partial class PopUp_Modifica_Lavori : System.Web.UI.Page
         int CodiceCommessa = int.Parse(ddlCodiceCommessa.SelectedValue);
 
         LAVORI L = new LAVORI();
+        L.CodiceLavoro = cod;
+        L.CodiceCommessa = CodiceCommessa;
+        L.CodicePersonale = CodicePersonale;
+        L.Pasti = Pasti;
+        L.DataLavoro = txtDataLavoro.Text;
+        L.OreLavoro = OreLavoro;
+        L.Km = KM;
+        L.Trasferta = Trasferta;
+        L.Pernottamenti = Pernottamenti;
+
+
         L.Update();
         
         //svuoto i campi

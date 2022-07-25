@@ -29,6 +29,11 @@
                 </tr>
                 <tr>
                     <td>
+                        <asp:TextBox ID="txtDescrizione" runat="server" Tooltip="Descrizione"></asp:TextBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
                         <asp:TextBox ID="txtInizio" runat="server" Tooltip="Inizio" TextMode="Date"></asp:TextBox>
                     </td>
                 </tr>

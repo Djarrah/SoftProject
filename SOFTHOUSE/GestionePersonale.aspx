@@ -111,13 +111,11 @@
     <asp:GridView runat="server" ID="grigliaPersonale" AutoGenerateColumns="False" DataKeyNames="CodicePersonale" OnSelectedIndexChanged="grigliaPersonale_SelectedIndexChanged">
         <Columns>
             <asp:BoundField DataField="CodicePersonale" Visible="false" />
-            <asp:BoundField DataField="CodiceAzienda" Visible="false" />
-            <asp:BoundField DataField="CodiceTipoContratto" Visible="false" />
-            <asp:BoundField DataField="Ragione Sociale (Azienda)" HeaderText="Azienda" />
+            <asp:BoundField DataField="Azienda" HeaderText="Azienda" />
             <asp:BoundField DataField="Contratto" HeaderText="Contratto" />
             <asp:BoundField DataField="Cognome" HeaderText="Cognome" />
             <asp:BoundField DataField="Nome" HeaderText="Nome" />
-            <asp:BoundField DataField="Ragione Sociale" HeaderText="Ragione Sociale" />
+            <asp:BoundField DataField="RagioneSociale" HeaderText="Ragione Sociale" />
             <asp:BoundField DataField="CodiceFiscale" HeaderText="Codice Fiscale" />
             <asp:BoundField DataField="PartitaIva" HeaderText="Partita IVA" />
             <asp:BoundField DataField="Indirizzo" HeaderText="Indirizzo" />
@@ -130,8 +128,8 @@
             <asp:BoundField DataField="DataFineCollaborazione" HeaderText="Fine Collaborazione" />
             <asp:CommandField ButtonType="Button" ShowSelectButton="True" />
         </Columns>
-                    <HeaderStyle CssClass="headergrid" />
-        <SelectedRowStyle CssClass="selezionegrid"/>
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid" />
 
     </asp:GridView>
 
@@ -148,8 +146,8 @@
             <asp:BoundField DataField="DescrizioneTipoContratto" HeaderText="Descrizione" />
             <asp:CommandField ShowSelectButton="True" ButtonType="Button" />
         </Columns>
-                <HeaderStyle CssClass="headergrid" />
-        <SelectedRowStyle CssClass="selezionegrid"/>
+        <HeaderStyle CssClass="headergrid" />
+        <SelectedRowStyle CssClass="selezionegrid" />
     </asp:GridView>
 
 </asp:Content>

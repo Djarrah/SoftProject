@@ -43,6 +43,7 @@ public partial class Popup_Modifica_ModificaSpese : System.Web.UI.Page
             ddlAziende.SelectedValue = riga["CodiceAzienda"].ToString();
             ddlClienti.SelectedValue = riga["CodiceCliente"].ToString();
             ddlTipologieCommesse.SelectedValue = riga["CodiceTipoCommessa"].ToString();
+            txtDescrizioneCommessa.Text = riga["DescrizioneCommessa"].ToString();
             txtInizio.Text = riga.Field<DateTime>("DataInizioCommessa").ToString("yyyy-MM-dd");
             txtFine.Text = riga.Field<DateTime>("DataFineCommessa").ToString("yyyy-MM-dd");
             txtTotale.Text = riga["ImportoTotale"].ToString();
@@ -127,10 +128,7 @@ public partial class Popup_Modifica_ModificaSpese : System.Web.UI.Page
         int codiceTipoCommessa = int.Parse(ddlTipologieCommesse.SelectedValue);
         bool commessaChiusa = cbxChiusa.Checked;
 
-        COMMESSE c = new COMMESSE(
-            codiceCommessa, codiceAzienda, codiceCliente, codiceTipoCommessa, txtInizio.Text, txtFine.Text, totale,
-            orario, mensile, trasferta, km, pasti, pernottamenti, commessaChiusa
-            );
+        COMMESSE c = new COMMESSE(codiceCommessa, codiceAzienda, codiceCliente, txtDescrizioneCommessa.Text, codiceTipoCommessa, txtInizio.Text, txtFine.Text, totale, orario, mensile, trasferta, km, pasti, pernottamenti, commessaChiusa);
 
         // Aggiornamento
         c.Update();

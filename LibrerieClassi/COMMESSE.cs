@@ -33,9 +33,9 @@ public class COMMESSE
     public COMMESSE(int CodiceCommessa) { this.CodiceCommessa = CodiceCommessa;}
 
     public COMMESSE(
-        int CodiceAzienda, int CodiceCliente, int CodiceTipoCommessa, string DataInizioCommessa, string DataFineCommessa,
+        int CodiceAzienda, int CodiceCliente, int CodiceTipoCommessa, string DescrizioneCommessa, string DataInizioCommessa, string DataFineCommessa,
         decimal ImportoTotale, decimal ImportoOrario, decimal ImportoMensile, decimal ImportoTrasferta,
-        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa, string DescrizioneCommessa
+        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa
         )
     {
         this.CodiceAzienda = CodiceAzienda;
@@ -55,9 +55,9 @@ public class COMMESSE
     }
 
     public COMMESSE(
-        int CodiceCommessa, int CodiceAzienda, int CodiceCliente, int CodiceTipoCommessa, string DataInizioCommessa,
+        int CodiceCommessa, int CodiceAzienda, int CodiceCliente, string DescrizioneCommessa, int CodiceTipoCommessa, string DataInizioCommessa,
         string DataFineCommessa, decimal ImportoTotale, decimal ImportoOrario, decimal ImportoMensile, decimal ImportoTrasferta,
-        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa, string DescrizioneCommessa
+        decimal ImportoKm, decimal ImportoPasti, decimal ImportoPernottamenti, bool CommessaChiusa
         )
     {
         this.CodiceCommessa = CodiceCommessa;

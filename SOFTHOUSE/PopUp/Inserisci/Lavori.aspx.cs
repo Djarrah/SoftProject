@@ -21,8 +21,8 @@ public partial class PopUp_Inserisci_Lavori : System.Web.UI.Page
             //Richiamo il tipo Commessa
             COMMESSE C = new COMMESSE();
             ddlCodiceCommessa.DataSource = C.Select();
-            ddlCodiceCommessa.DataTextField="CodiceCommessa";
-            ddlCodiceCommessa.DataValueField="DescrizioneCommessa";
+            ddlCodiceCommessa.DataValueField="CodiceCommessa";
+            ddlCodiceCommessa.DataTextField="Descrizione Commessa";
             ddlCodiceCommessa.DataBind();
         }
     }
@@ -58,6 +58,15 @@ public partial class PopUp_Inserisci_Lavori : System.Web.UI.Page
         int CodiceCommessa= int.Parse(ddlCodiceCommessa.SelectedValue);
 
         LAVORI L= new LAVORI();
+        L.CodicePersonale = CodicePersonale;
+        L.CodiceCommessa = CodiceCommessa;
+        L.DataLavoro = txtDataLavoro.Text;
+        L.OreLavoro = OreLavoro;
+        L.Trasferta = Trasferta;
+        L.Km = KM;
+        L.Pasti = Pasti;
+        L.Pernottamenti = Pernottamenti;
+
         L.Insert();
 
         txtDataLavoro.Text = "";

@@ -34,6 +34,7 @@ public partial class PopUp_Inserisci_Clienti : System.Web.UI.Page
         // Controlli Formali
 
         if (
+            string.IsNullOrEmpty(txtDescrizione.Text) ||
             string.IsNullOrEmpty(txtInizio.Text) ||
             string.IsNullOrEmpty(txtFine.Text) ||
             string.IsNullOrEmpty(txtTotale.Text) ||
@@ -93,7 +94,7 @@ public partial class PopUp_Inserisci_Clienti : System.Web.UI.Page
         bool commessaChiusa = cbxChiusa.Checked;
 
         COMMESSE c = new COMMESSE(
-            codiceAzienda, codiceCliente, codiceTipoCommessa, txtInizio.Text, txtFine.Text, totale,
+            codiceAzienda, codiceCliente, codiceTipoCommessa, txtDescrizione.Text,txtInizio.Text, txtFine.Text, totale,
             orario, mensile, trasferta, km, pasti, pernottamenti, commessaChiusa
             );
 
