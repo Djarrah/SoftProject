@@ -84,14 +84,67 @@ public partial class PopUp_Inserisci_Personale : System.Web.UI.Page
         string DataInizioCollab = txtDataInizioCollab.Text.Trim();
         string DataFineCollab = txtDataFineCollab.Text.Trim();
 
-        PERSONALE P = new PERSONALE(CodiceAzienda, CodiceTipoContratto, Cognome, Nome, RagioneSociale, CodiceFiscale, PartitaIva, Indirizzo, Citta, Provincia, Cap, DataNascita, CostoMensile, DataInizioCollab, DataFineCollab);
-        if (P.CheckOne())
+        if (ddlCodiceTipoContratto.SelectedItem.Text == "Dipendente")
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
-            return;
+            DIPENDENTI d = new DIPENDENTI();
+            d.CodiceAzienda = CodiceAzienda;
+            d.CodiceTipoContratto = CodiceTipoContratto;
+            d.Cognome = Cognome;
+            d.Nome = Nome;
+            d.CodiceFiscale = CodiceFiscale;
+            d.Indirizzo = Indirizzo;
+            d.Citta = Citta;
+            d.Provincia = Provincia;
+            d.Cap = Cap;
+            d.DataNascita = DataNascita;
+            d.DataInizioCollaborazione = DataInizioCollab;
+            d.DataFineCollaborazione = DataFineCollab;
+            d.CostoMensile = CostoMensile;
+
+            if (d.CheckOne())
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
+                return;
+            }
+
+            d.Insert();
+        }
+        else if (ddlCodiceTipoContratto.SelectedItem.Text == "Collaboratore P.IVA")
+        {
+            PARTITEIVA p = new PARTITEIVA();
+            p.CodiceAzienda = CodiceAzienda;
+            p.CodiceTipoContratto = CodiceTipoContratto;
+            p.RagioneSociale = RagioneSociale;
+            p.Cognome = Cognome;
+            p.Nome = Nome;
+            p.PartitaIva = PartitaIva;
+            p.CodiceFiscale = CodiceFiscale;
+            p.Indirizzo = Indirizzo;
+            p.Citta = Citta;
+            p.Provincia = Provincia;
+            p.Cap = Cap;
+            p.DataNascita = DataNascita;
+            p.DataInizioCollaborazione = DataInizioCollab;
+            p.DataFineCollaborazione = DataFineCollab;
+            p.CostoMensile = CostoMensile;
+
+            if (p.CheckOne())
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
+                return;
+            }
+
+            p.Insert();
         }
 
-        P.Insert();
+        //PERSONALE P = new PERSONALE(CodiceAzienda, CodiceTipoContratto, Cognome, Nome, RagioneSociale, CodiceFiscale, PartitaIva, Indirizzo, Citta, Provincia, Cap, DataNascita, CostoMensile, DataInizioCollab, DataFineCollab);
+        //if (P.CheckOne())
+        //{
+        //    ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
+        //    return;
+        //}
+
+        //P.Insert();
 
         txtCognome.Text = String.Empty;
         txtNome.Text = String.Empty;
@@ -107,24 +160,25 @@ public partial class PopUp_Inserisci_Personale : System.Web.UI.Page
         txtDataInizioCollab.Text = String.Empty;
         txtDataFineCollab.Text = String.Empty;
 
-        
-
         lbl.Text = "Record Inserito!";
     }
 
     protected void ddlCodiceTipoContratto_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlCodiceTipoContratto.SelectedItem.Text=="Dipendenti")
+        if (ddlCodiceTipoContratto.SelectedItem.Text=="Dipendente")
         {
             txtRagioneSociale.Visible = false;
             txtPartitaIva.Visible=false;
            
         }
-        else
-            if(ddlCodiceTipoContratto.SelectedItem.Text=="Collaboratori P.Iva")
+        else if (ddlCodiceTipoContratto.SelectedItem.Text=="Collaboratore P.IVA")
         {
             txtRagioneSociale.Visible = true;
-            txtPartitaIva.Visible=true;
+            txtPartitaIva.Visible = true;
+        }
+        else
+        {
+            lbl.Text = "ERRORE";
         }
     }
 }
