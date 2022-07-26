@@ -8,11 +8,11 @@ using System.Web.UI.WebControls;
 
 public partial class PopUp_Modifica_Fatture : System.Web.UI.Page
 {
-    protected void Page_Load(object sender, EventArgs e)
+   protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
         {
-            if (Session["CodiceCommessa"] == null)
+            if (Session["CodiceFattura"] == null)
             {
                 lbl.Text = "ERRORE, selezionare una voce";
                 tabella.Visible = false;
@@ -20,18 +20,19 @@ public partial class PopUp_Modifica_Fatture : System.Web.UI.Page
                 return;
             }
 
-            int cod = int.Parse(Session["CodiceCommessa"].ToString());
+            int cod = int.Parse(Session["CodiceFattura"].ToString());
             FATTURE F = new FATTURE();
             DataRow sel = F.Select(cod).Rows[0];
             txtImponibile.Text = sel["Imponibile"].ToString();
             txtAliquota.Text = sel["Aliquota"].ToString();
+            
         }
     }
 
     protected void btnModifica_Click(object sender, EventArgs e)
     {
         // Se non vi è nessun elemento selezionato impedisco il proseguimento
-        if (Session["CodiceCommessa"] == null)
+        if (Session["CodiceFattura"] == null)
         {
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Seleziona una riga per poterla modificare')", true);
             return;
@@ -39,13 +40,27 @@ public partial class PopUp_Modifica_Fatture : System.Web.UI.Page
 
 
         if (string.IsNullOrEmpty(txtImponibile.Text) ||
-             string.IsNullOrEmpty(txtAliquota.Text)
-           )
-
+             string.IsNullOrEmpty(txtAliquota.Text))
+             
         {
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Dati non Validi')", true); ;
             return;
         }
-       
+
+        FATTURE F = new FATTURE();
+        F.CodiceFattura = int.Parse(Session["CodiceFattura"].ToString()); ;
+        F.Imponibile = txtImponibile.Text.Trim();
+        F.Aliquota = txtAliquota.Text.Trim();
+
+        if (F.CheckOne() == true)
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Dati già presenti')", true);
+            return;
+        }
+
+        F.Update();
+        txtImponibile.Text = "";
+        txtAliquota.Text = "";
+        lbl.Text = "Record Modificato";
     }
 }
