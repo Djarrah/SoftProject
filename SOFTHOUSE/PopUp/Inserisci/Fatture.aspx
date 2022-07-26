@@ -23,7 +23,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList ID="txtImponibile" PlaceHolder ="Imponibile" runat="server"></asp:DropDownList><br />
+                        <asp:DropDownList ID="txtImponibile" PlaceHolder="Imponibile" runat="server"></asp:DropDownList><br />
                     </td>
                 </tr>
                 <tr>

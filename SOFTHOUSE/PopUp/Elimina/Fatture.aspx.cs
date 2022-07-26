@@ -14,8 +14,8 @@ public partial class PopUp_Elimina_Fatture : System.Web.UI.Page
     protected void btnElimina_Click(object sender, EventArgs e)
     {
         FATTURE F = new FATTURE();
-        int CodiceCommessa = int.Parse(Session["CodiceCommessa"].ToString());
-        F.CodiceCommessa = CodiceCommessa;
+        int CodiceFattura = int.Parse(Session["CodiceFattura"].ToString());
+        F.CodiceFattura = CodiceFattura;
         F.Delete();
         ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Eliminazione avvenuta con successo')", true);
     }

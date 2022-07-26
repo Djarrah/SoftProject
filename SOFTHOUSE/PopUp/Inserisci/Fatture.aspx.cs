@@ -23,16 +23,29 @@ public partial class PopUp_Inserisci_Fatture : System.Web.UI.Page
             ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Dati non Validi')", true);
             return;
         }
-        if ((!decimal.TryParse(txtImponibile.Text.Replace('.', ','), out decimal Imponibile) ||
+
+        FATTURE F = new FATTURE();
+        
+        if (!decimal.TryParse(txtImponibile.Text.Replace('.', ','), out decimal Imponibile) ||
             !decimal.TryParse(txtAliquota.Text.Replace('.', ','), out decimal Aliquota) 
-           ))
+           )
         {
             ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Non valido')", true);
             return;
         }
 
-        //Dichiarazione variabili
-        int CodiceCommessa = int.Parse(ddlCodiceCommessa.SelectedValue);
+        if (F.CheckOne())
+        {
+            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Record Esistente')", true);
+            return;
+        }
+
+        F.Insert();
+
+        txtImponibile.Text = String.Empty;
+        txtAliquota.Text = String.Empty;
+
+        lbl.Text = "Record Inserito";
 
     }
 }
