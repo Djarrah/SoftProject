@@ -114,6 +114,7 @@ public class FATTURE
     public decimal ImportoTotaleOre()
     {
         SqlCommand cmd = new SqlCommand("FATTURE_SOMMAORE");
+        cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
         CONNESSIONE conn = new CONNESSIONE();
         DataTable dt = new DataTable();
         dt = conn.EseguiSelect(cmd);
