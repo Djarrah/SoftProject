@@ -29,7 +29,7 @@ public class PERSONALE
 
     public PERSONALE()
     {
-        
+
     }
 
     public PERSONALE(int CodicePersonale, int CodiceAzienda, int CodiceTipoContratto, string Cognome, string Nome, string RagioneSociale, string CodiceFiscale, string PartitaIva, string Indirizzo, string Citta, string Provincia, string Cap, string DataNascita, decimal CostoMensile, string DataInizioCollaborazione, string DataFineCollaborazione)
@@ -110,7 +110,7 @@ public class PERSONALE
         CONNESSIONE conn = new CONNESSIONE();
         conn.EseguiCmd(cmd);
     }
-public bool CheckOne()
+    public bool CheckOne()
     {
         CONNESSIONE c = new CONNESSIONE();
         DataTable dt = new DataTable();
@@ -126,7 +126,7 @@ public bool CheckOne()
 
         return dt.Rows.Count > 0;
     }
-public void Update()
+    public void Update()
     {
         SqlCommand cmd = new SqlCommand("PERSONALE_UPDATE");
         cmd.Parameters.AddWithValue("@CodicePersonale", CodicePersonale);
@@ -148,5 +148,13 @@ public void Update()
 
         CONNESSIONE conn = new CONNESSIONE();
         conn.EseguiCmd(cmd);
+    }
+
+    public DataTable SelectDdl()
+    {
+        SqlCommand cmd = new SqlCommand("PERSONALE_SELECTFORDDL");
+
+        CONNESSIONE conn = new CONNESSIONE();
+        return conn.EseguiSelect(cmd);
     }
 }

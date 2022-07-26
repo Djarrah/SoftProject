@@ -28,24 +28,30 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
 
             TIPOLOGIECONTRATTI TC = new TIPOLOGIECONTRATTI();
             ddlCodiceTipoContratto.DataSource = TC.Select();
-            ddlCodiceTipoContratto.DataTextField="DescrizioneTipoContratto";
+            ddlCodiceTipoContratto.DataValueField = "CodiceTipoContratto";
+            ddlCodiceTipoContratto.DataTextField = "DescrizioneTipoContratto";
             ddlCodiceTipoContratto.DataBind();
 
             int cod = int.Parse(Session["CodicePersonale"].ToString());
             PERSONALE P = new PERSONALE();
             DataRow sel = P.Select(cod).Rows[0];
+            ddlCodiceAzienda.SelectedValue = sel["CodiceAzienda"].ToString();
+            ddlCodiceTipoContratto.SelectedValue = sel["CodiceTipoContratto"].ToString();
             txtCognome.Text = sel["Cognome"].ToString();
             txtNome.Text = sel["Nome"].ToString();
+            txtRagioneSociale.Text = sel["RagioneSociale"].ToString();
             txtPartitaIva.Text = sel["PartitaIva"].ToString();
             txtCodiceFiscale.Text = sel["CodiceFiscale"].ToString();
             txtIndirizzo.Text = sel["Indirizzo"].ToString();
             txtCitta.Text = sel["Citta"].ToString();
             txtProvincia.Text = sel["Provincia"].ToString();
             txtCap.Text = sel["Cap"].ToString();
-            txtDataNascita.Text = sel["DataNascita"].ToString();
+            txtDataNascita.Text = sel.Field<DateTime>("DataNascita").ToString("yyyy-MM-dd");
             txtCostoMensile.Text = sel["CostoMensile"].ToString();
-            txtDataInizioCollab.Text = sel["DataInizioCollaborazione"].ToString();
-            txtDataFineCollab.Text = sel["DataFineCollaborazione"].ToString();
+            txtDataInizioCollab.Text = sel.Field<DateTime>("DataInizioCollaborazione").ToString("yyyy-MM-dd");
+            txtDataFineCollab.Text = sel.Field<DateTime>("DataFineCollaborazione").ToString("yyyy-MM-dd");
+
+            CambiaCampi();
         }
     }
     protected void btnModifica_Click(object sender, EventArgs e)
@@ -112,15 +118,60 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
         string DataInizioCollab = txtDataInizioCollab.Text.Trim();
         string DataFineCollab = txtDataFineCollab.Text.Trim();
 
-        PERSONALE P = new PERSONALE(cod, CodiceAzienda, CodiceTipoContratto, Cognome, Nome, RagioneSociale, CodiceFiscale, PartitaIva, Indirizzo, Citta, Provincia, Cap, DataNascita, CostoMensile, DataInizioCollab, DataFineCollab);
-
-        if (P.CheckOne())
+        if (ddlCodiceTipoContratto.SelectedItem.Text == "Dipendente")
         {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Record Esistente')", true);
-            return;
-        }
+            DIPENDENTI d = new DIPENDENTI();
+            d.CodicePersonale = cod;
+            d.CodiceAzienda = CodiceAzienda;
+            d.CodiceTipoContratto = CodiceTipoContratto;
+            d.Cognome = Cognome;
+            d.Nome = Nome;
+            d.CodiceFiscale = CodiceFiscale;
+            d.Indirizzo = Indirizzo;
+            d.Citta = Citta;
+            d.Provincia = Provincia;
+            d.Cap = Cap;
+            d.DataNascita = DataNascita;
+            d.DataInizioCollaborazione = DataInizioCollab;
+            d.DataFineCollaborazione = DataFineCollab;
+            d.CostoMensile = CostoMensile;
 
-        P.Update();
+            if (d.CheckOne())
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
+                return;
+            }
+
+            d.Update();
+        }
+        else if (ddlCodiceTipoContratto.SelectedItem.Text == "Collaboratore P.IVA")
+        {
+            PARTITEIVA p = new PARTITEIVA();
+            p.CodicePersonale = cod;
+            p.CodiceAzienda = CodiceAzienda;
+            p.CodiceTipoContratto = CodiceTipoContratto;
+            p.RagioneSociale = RagioneSociale;
+            p.Cognome = Cognome;
+            p.Nome = Nome;
+            p.PartitaIva = PartitaIva;
+            p.CodiceFiscale = CodiceFiscale;
+            p.Indirizzo = Indirizzo;
+            p.Citta = Citta;
+            p.Provincia = Provincia;
+            p.Cap = Cap;
+            p.DataNascita = DataNascita;
+            p.DataInizioCollaborazione = DataInizioCollab;
+            p.DataFineCollaborazione = DataFineCollab;
+            p.CostoMensile = CostoMensile;
+
+            if (p.CheckOne())
+            {
+                ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Già Esistente')", true);
+                return;
+            }
+
+            p.Update();
+        }
 
         txtCognome.Text = String.Empty;
         txtNome.Text = String.Empty;
@@ -136,21 +187,27 @@ public partial class PopUp_Modifica_Personale : System.Web.UI.Page
         txtDataInizioCollab.Text = String.Empty;
         txtDataFineCollab.Text = String.Empty;
 
+        Session["CodicePersonale"] = null;
+
         lbl.Text = "Record Modificato!";
     }
     protected void ddlCodiceTipoContratto_SelectedIndexChanged(object sender, EventArgs e)
     {
-        if (ddlCodiceTipoContratto.SelectedItem.Text=="Dipendenti")
+        CambiaCampi();
+    }
+
+    void CambiaCampi()
+    {
+        if (ddlCodiceTipoContratto.SelectedItem.Text == "Dipendente")
         {
             txtRagioneSociale.Visible = false;
-            txtPartitaIva.Visible=false;
+            txtPartitaIva.Visible = false;
 
         }
-        else
-            if (ddlCodiceTipoContratto.SelectedItem.Text=="Collaboratori P.Iva")
+        else if (ddlCodiceTipoContratto.SelectedItem.Text == "Collaboratore P.IVA")
         {
             txtRagioneSociale.Visible = true;
-            txtPartitaIva.Visible=true;
+            txtPartitaIva.Visible = true;
         }
     }
 }

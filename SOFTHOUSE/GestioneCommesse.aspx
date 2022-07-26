@@ -109,6 +109,7 @@
             <asp:BoundField DataField="Azienda" HeaderText="Azienda"/>
             <asp:BoundField DataField="Cliente" HeaderText="Cliente"/>
             <asp:BoundField DataField="Tipologia" HeaderText="Tipologia"/>
+            <asp:BoundField DataField="Descrizione Commessa" HeaderText="Descrizione"/>
             <asp:BoundField DataField="Data inizio" HeaderText="Data Inizio"/>
             <asp:BoundField DataField="Data Fine" HeaderText="Data Fine"/>
             <asp:BoundField DataField="Totale" HeaderText="Importo Totale"/>

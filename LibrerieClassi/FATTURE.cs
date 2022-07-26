@@ -16,26 +16,16 @@ public class FATTURE
         // TODO: aggiungere qui la logica del costruttore
         //
     }
-    public int Anno;
-    public int Mese;
+
     public int CodiceCommessa;
     public decimal Imponibile;
     public int AliquotaIva;
-    public int Giorno = 15;
     public int CodiceFattura;
     public string NumeroFattura;
-    public decimal Importo;
 
     public DataTable Select()
     {
         SqlCommand cmd = new SqlCommand("FATTURE_SELECTALL");
-        CONNESSIONE conn = new CONNESSIONE();
-        return conn.EseguiSelect(cmd);
-    }
-    public DataTable SelectOne(int CodiceFattura)
-    {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTONE");
-        cmd.Parameters.AddWithValue("@CodiceFattura", CodiceFattura);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
@@ -58,11 +48,18 @@ public class FATTURE
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
+    public DataTable SelectOne(int CodiceFattura)
+    {
+        SqlCommand cmd = new SqlCommand("FATTURE_SELECTONE");
+        cmd.Parameters.AddWithValue("@CodiceFattura", CodiceFattura);
+        CONNESSIONE conn = new CONNESSIONE();
+        return conn.EseguiSelect(cmd);
+    }
 
     public DataTable SelectCommesse(int Anno, int Mese)
     {
         SqlCommand cmd = new SqlCommand("COMMESSE_SELECT");
-        DateTime Data = new DateTime(Anno, Mese, Giorno);
+        DateTime Data = new DateTime(Anno, Mese, 15);
         cmd.Parameters.AddWithValue("@Data", Data);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
@@ -70,30 +67,39 @@ public class FATTURE
 
     public DataTable SelectLavori(int Anno, int Mese, int CodiceCommessa)
     {
-        SqlCommand cmd = new SqlCommand("FATTURE_SELECTLAVORI");
-        DateTime Data = new DateTime(Anno, Mese, Giorno);
-        cmd.Parameters.AddWithValue("@Data", Data);
-        cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
-        CONNESSIONE conn = new CONNESSIONE();
-        return conn.EseguiSelect(cmd);
-    }
-    public DataTable SommaLavori()
-    {
-        SqlCommand cmd = new SqlCommand("FATTURE_SOMMALAVORI");
+        SqlCommand cmd = new SqlCommand("LAVORI_SELECT");
+        DateTime Data = new DateTime(Anno, Mese, 15);
         cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
         cmd.Parameters.AddWithValue("@Anno", Anno);
         cmd.Parameters.AddWithValue("@Mese", Mese);
         CONNESSIONE conn = new CONNESSIONE();
         return conn.EseguiSelect(cmd);
     }
-    public DataTable SommaLavoriOre()
+    public decimal SommaLavori(int Anno, int Mese)
     {
         SqlCommand cmd = new SqlCommand("FATTURE_SOMMALAVORI");
         cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
         cmd.Parameters.AddWithValue("@Anno", Anno);
         cmd.Parameters.AddWithValue("@Mese", Mese);
         CONNESSIONE conn = new CONNESSIONE();
-        return conn.EseguiSelect(cmd);
+        DataTable dt = new DataTable();
+        dt = conn.EseguiSelect(cmd);
+        return decimal.Parse(dt.Rows[0]["SOMMA"].ToString());
+
+    }
+    public decimal SommaOre(int Anno, int Mese)
+    {
+        SqlCommand cmd = new SqlCommand("FATTURE_SOMMAORE");
+        cmd.Parameters.AddWithValue("@CodiceCommessa", CodiceCommessa);
+        cmd.Parameters.AddWithValue("@Anno", Anno);
+        cmd.Parameters.AddWithValue("@Mese", Mese);
+        CONNESSIONE conn = new CONNESSIONE();
+        DataTable dt = new DataTable();
+        dt = conn.EseguiSelect(cmd);
+        decimal OreTotali = decimal.Parse(dt.Rows[0]["SOMMA"].ToString());
+        COMMESSE c = new COMMESSE();
+        decimal ImportoOrario = decimal.Parse(c.Select(CodiceCommessa).Rows[0]["ImportoOrario"].ToString());
+        return OreTotali * ImportoOrario;
     }
 
 
@@ -103,26 +109,17 @@ public class FATTURE
         COMMESSE c = new COMMESSE();
         DataTable dt = new DataTable();
         dt = c.Select(CodiceCommessa);
-        return Importo = decimal.Parse(dt.Rows[0]["ImportoTotale"].ToString());
+        return decimal.Parse(dt.Rows[0]["ImportoTotale"].ToString());
     }
     public decimal ImportoTotaleOre()
     {
         SqlCommand cmd = new SqlCommand("FATTURE_SOMMAORE");
         CONNESSIONE conn = new CONNESSIONE();
-        
         DataTable dt = new DataTable();
-        dt=conn.EseguiSelect(cmd);
-        return Importo = decimal.Parse(dt.Rows[0]["ImportoTotale"].ToString());
+        dt = conn.EseguiSelect(cmd);
+        return decimal.Parse(dt.Rows[0]["SOMMA"].ToString());
     }
-    //public DataTable SelectCorpo()
-    //{
 
-    //}
-    
-    //public DataTable SelectOre()
-    //{
-     
-    //}
 
     public void Insert()
     {
@@ -152,19 +149,46 @@ public class FATTURE
         CONNESSIONE conn = new CONNESSIONE();
         conn.EseguiCmd(cmd);
     }
-
-
-    public void Emissione()
+    public string StringaFattura()
     {
-        SqlCommand cmd = new SqlCommand("FATTURE_EMISSIONE");
-        DateTime DataFattura = new DateTime();
-        DataFattura = DateTime.Now;
-        Select(Anno);
+        SqlCommand cmd = new SqlCommand("FATTURE_ULTIMA");
+        int Anno=DateTime.Now.Year;
+        cmd.Parameters.AddWithValue("@Anno", Anno);
 
+        CONNESSIONE conn = new CONNESSIONE();
+        DataTable dt = new DataTable();
+        dt = conn.EseguiSelect(cmd);
+
+        if (dt.Rows.Count == 0) { return "001"; }
+        int PiuUno = int.Parse(dt.Rows[0]["ULTIMA"].ToString()) + 1;
+        string TreCar;
+        if (PiuUno <= 9)
+        {
+            PiuUno.ToString();
+            TreCar = "00"; TreCar += "PiuUno";
+            return TreCar;
+        }
+        else if (PiuUno <= 99)
+        {
+            PiuUno.ToString();
+            TreCar = "0"; TreCar += "PiuUno";
+            return TreCar;
+
+        }
+        else
+        {
+            return PiuUno.ToString();
+        }
+
+    }
+
+    public void Emetti()
+    {
+        SqlCommand cmd = new SqlCommand("FATTURE_EMETTI");
 
         cmd.Parameters.AddWithValue("@CodiceFattura", CodiceFattura);
-        cmd.Parameters.AddWithValue("@NumeroFattura", NumeroFattura);
-        cmd.Parameters.AddWithValue("@DataFattura", DataFattura);
+        cmd.Parameters.AddWithValue("@numero", StringaFattura());
+
 
     }
 

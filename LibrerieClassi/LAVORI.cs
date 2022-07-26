@@ -10,23 +10,15 @@ using System.Data.SqlClient;
 /// </summary>
 public class LAVORI
 {
-    public LAVORI()
-    {
-        //
-        // TODO: aggiungere qui la logica del costruttore
-        //
-    }
-    int CodiceLavoro;
-    int CodicePersonale;
-    int CodiceCommessa;
-    string DataLavoro;
-    decimal OreLavoro;
-    decimal Trasferta;
-    int Km;
-    decimal Pasti;
-    decimal Pernottamenti;
-
-
+    public int CodiceLavoro;
+    public int CodicePersonale;
+    public int CodiceCommessa;
+    public string DataLavoro;
+    public decimal OreLavoro;
+    public decimal Trasferta;
+    public int Km;
+    public decimal Pasti;
+    public decimal Pernottamenti;
 
 
     public DataTable Select()
