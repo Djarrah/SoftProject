@@ -24,7 +24,7 @@
                 </tr>
                 <tr>
                     <td>
-                        <asp:DropDownList ID="txtImponibile" PlaceHolder ="Imponibile" runat="server"></asp:DropDownList><br />
+                        <asp:DropDownList ID="txtImponibile" PlaceHolder="Imponibile" runat="server"></asp:DropDownList><br />
                     </td>
                 </tr>
                 <tr>
@@ -34,7 +34,6 @@
                 </tr>
                 <tr>
                     <td>
-
                         <asp:Button ID="btnModifica" runat="server" Text="Modifica" OnClick="btnModifica_Click" />
                     </td>
                 </tr>

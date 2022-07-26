@@ -34,12 +34,6 @@ public partial class PopUp_Inserisci_Fatture : System.Web.UI.Page
             return;
         }
 
-        if (F.CheckOne())
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Record Esistente')", true);
-            return;
-        }
-
         F.Insert();
 
         txtImponibile.Text = String.Empty;

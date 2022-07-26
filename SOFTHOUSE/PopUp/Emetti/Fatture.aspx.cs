@@ -16,7 +16,7 @@ public partial class PopUp_Emetti_Fatture : System.Web.UI.Page
         FATTURE F = new FATTURE();
         int CodiceFattura = int.Parse(Session["CodiceFattura"].ToString());
         F.CodiceFattura = CodiceFattura;
-        F.Emissione();
+        F.Emetti();
         ScriptManager.RegisterClientScriptBlock(this, GetType(), "ATTENZIONE", "alert('Fattura emessa con successo!')", true);
     }
 }

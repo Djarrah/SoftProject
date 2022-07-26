@@ -49,14 +49,8 @@ public partial class PopUp_Modifica_Fatture : System.Web.UI.Page
 
         FATTURE F = new FATTURE();
         F.CodiceFattura = int.Parse(Session["CodiceFattura"].ToString()); ;
-        F.Imponibile = txtImponibile.Text.Trim();
-        F.Aliquota = txtAliquota.Text.Trim();
-
-        if (F.CheckOne() == true)
-        {
-            ScriptManager.RegisterClientScriptBlock(this, this.GetType(), "ATTENZIONE", "alert('Dati già presenti')", true);
-            return;
-        }
+        F.Imponibile = decimal.Parse(txtImponibile.Text.Trim());
+        F.AliquotaIva = int.Parse(txtAliquota.Text.Trim());
 
         F.Update();
         txtImponibile.Text = "";
